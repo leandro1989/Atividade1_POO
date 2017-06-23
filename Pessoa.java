@@ -59,20 +59,18 @@ public class Pessoa {
 		this.salario = salario;
 	}
 	//Metodo que permite cada proprietario adiquirir no max 4 casas.
-	public void proprietarioDaCasa(Residencia casa){
+	public boolean proprietarioDaCasa(Residencia casa){
 		if(this.numeroCasas<4){
 			if(casa.getComprarCasa()){
 				this.numeroCasas++;
 				casa.adquirirCasa(this.nome);
-				System.out.println(this.nome + " a casa foi adquirida com sucesso.");
+				return true;
 			}
 			else {
-				System.out.println(this.nome +" a Casa não esta disponível para aquizição.");	
+				return false;
 			}
 		}
-		else {
-			System.out.println(this.nome + " já possui 4 casas.");
-		}
+		return false;
 	}
 	//Metodo para a casa ser alugada no max uma vez. 
 	public void alugarCasa(Residencia casa){
